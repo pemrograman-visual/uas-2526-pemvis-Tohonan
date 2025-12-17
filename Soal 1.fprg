@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Soal 1"/>
+        <attribute name="authors" value="Asus"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-12-17 04:41:56 PM"/>
+        <attribute name="created" value="QXN1cztFTU9USU9OTEVTUzsyMDI1LTEyLTE3OzA0OjI1OjI2IFBNOzI1NDU="/>
+        <attribute name="edited" value="QXN1cztFTU9USU9OTEVTUzsyMDI1LTEyLTE3OzA0OjI1OjI3IFBNOzE7TE9RO0xBUFRPUC1VOFZUMlM5NTsyMDI1LTEyLTExOzAzOjAxOjUxIFBNO1NPQUwgMS5mcHJnOzYyMDA="/>
+        <attribute name="edited" value="QXN1cztFTU9USU9OTEVTUzsyMDI1LTEyLTE3OzA0OjQxOjU2IFBNOzQ7MjY1Nw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, rating, tertinggi, terendah, count, n" type="Integer" array="False" size=""/>
+            <declare name="l" type="Integer" array="False" size=""/>
+            <declare name="total, rata" type="Real" array="False" size=""/>
+            <declare name="status" type="String" array="False" size=""/>
+            <declare name="data" type="Integer" array="True" size="7"/>
+            <assign variable="total" expression="0"/>
+            <assign variable="count" expression="0"/>
+            <assign variable="tertinggi" expression="-999"/>
+            <assign variable="terendah" expression="999"/>
+            <input variable="l"/>
+            <for variable="i" start="1" end="l" direction="inc" step="1">
+                <input variable="rating"/>
+                <while expression="rating &gt; 5">
+                    <output expression="&quot;INVALID&quot;" newline="True"/>
+                    <output expression="&quot;ulang&quot;" newline="True"/>
+                    <input variable="rating"/>
+                </while>
+                <assign variable="data[i]" expression="rating"/>
+                <assign variable="total" expression="total + rating"/>
+                <if expression="rating &gt; tertinggi">
+                    <then>
+                        <assign variable="tertinggi" expression="rating"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="rating &lt; terendah">
+                    <then>
+                        <assign variable="terendah" expression="rating"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="rating &gt;= 4">
+                    <then>
+                        <assign variable="count" expression="count + 1"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <assign variable="rata" expression="total / 6"/>
+            <if expression="rata &gt;= 4">
+                <then>
+                    <assign variable="status" expression="&quot;Kondisi sangat baik.&quot;"/>
+                </then>
+                <else>
+                    <if expression="rata &gt;= 3">
+                        <then>
+                            <assign variable="status" expression="&quot;Kondisi cukup, masih perlu peningkatan.&quot;"/>
+                        </then>
+                        <else>
+                            <assign variable="status" expression="&quot;Kondisi kurang, perlu banyak peningkatan.&quot;"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <output expression="&quot;Daftar rating: &quot; &amp; data[1]  &amp;&quot; &quot;&amp; data[2]  &amp;&quot; &quot;&amp; data[3]  &amp;&quot; &quot;&amp;  data[4]  &amp;&quot; &quot;&amp;  data[5]  &amp;&quot; &quot;&amp;  data[6]" newline="True"/>
+            <output expression="&quot;Rata-rata: &quot; &amp; ToFixed(rata,2)" newline="True"/>
+            <output expression="&quot;Tertinggi: &quot; &amp; tertinggi" newline="True"/>
+            <output expression="&quot;Terendah: &quot; &amp; terendah" newline="True"/>
+            <output expression="&quot;Reviewer rating &gt;=4: &quot; &amp; count &amp; &quot; orang&quot;" newline="True"/>
+            <output expression="status" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
