@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Soal 4"/>
+        <attribute name="authors" value="Asus"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-12-17 02:11:01 PM"/>
+        <attribute name="created" value="QXN1cztFTU9USU9OTEVTUzsyMDI1LTEyLTE3OzAxOjQ1OjQxIFBNOzI1NDE="/>
+        <attribute name="edited" value="QXN1cztFTU9USU9OTEVTUzsyMDI1LTEyLTE3OzAyOjExOjAxIFBNOzE7MjYzOQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="n, i, totalShift, maxShift, minShift" type="Integer" array="False" size=""/>
+            <declare name="Nama" type="String" array="True" size="8"/>
+            <declare name="Rata" type="Real" array="False" size=""/>
+            <declare name="Shift" type="Integer" array="True" size="8"/>
+            <declare name="NamaMax, NamaMin" type="String" array="False" size=""/>
+            <input variable="n"/>
+            <assign variable="totalShift" expression="0"/>
+            <for variable="i" start="1" end="n" direction="inc" step="1">
+                <input variable="Nama[i]"/>
+                <input variable="Shift[i]"/>
+                <assign variable="totalShift" expression="totalShift + Shift[i]"/>
+            </for>
+            <assign variable="MaxShift" expression="Shift[1]"/>
+            <assign variable="MinShift" expression="Shift[1]"/>
+            <assign variable="NamaMax" expression="Nama[1]"/>
+            <assign variable="NamaMin" expression="Nama[1]"/>
+            <for variable="i" start="1" end="n" direction="inc" step="1">
+                <if expression="Shift[i] &gt; MaxShift">
+                    <then>
+                        <assign variable="MaxShift" expression="Shift[i]"/>
+                        <assign variable="NamaMax" expression="Nama[i]"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="Shift[i] &lt; MinShift">
+                    <then>
+                        <assign variable="MinShift" expression="Shift[i]"/>
+                        <assign variable="NamaMin" expression="Nama[i]"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <assign variable="Rata" expression="totalShift / n"/>
+            <output expression="&quot;Daftar Shift:&quot;" newline="True"/>
+            <for variable="i" start="1" end="n" direction="inc" step="1">
+                <output expression="nama[i]&amp;&quot;=&quot;&amp;Shift[i]" newline="True"/>
+            </for>
+            <output expression="&quot;Total Shift = &quot;&amp;TotalShift" newline="True"/>
+            <output expression="&quot;Rata-rata = &quot;&amp;Rata" newline="True"/>
+            <output expression="&quot;Shift Terbanyak = &quot;&amp;NamaMax &amp; &quot;[&quot; &amp; MaxShift &amp; &quot;]&quot;" newline="True"/>
+            <output expression="&quot;Shift Tersedikit = &quot;&amp;NamaMin &amp; &quot;[&quot; &amp; MinShift &amp; &quot;]&quot;" newline="True"/>
+            <output expression="&quot;Distribusi Shift tidak merata, beberapa asisten terbebani.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
